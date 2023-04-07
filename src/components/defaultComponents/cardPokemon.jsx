@@ -16,7 +16,7 @@ export default function CardPokemon({ text }) {
   async function getInformations() {
     try {
       const response = await PokemonApi.getPokemonInformation(text);
-      //   console.log("informações", response);
+      console.log("informações", response);
       setInfo(response);
     } catch (error) {
       console.log("error: ", error);
