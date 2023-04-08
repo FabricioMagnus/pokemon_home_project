@@ -79,7 +79,7 @@ export default function List() {
         </Text>
         <Button
           fontWeight={"bold"}
-          height={"8vh"}
+          height={"6vh"}
           _hover={{
             backgroundColor: AMARELOPOKEMONLOGO,
             color: AZULPOKEMONLOGO,

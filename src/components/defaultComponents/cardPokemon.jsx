@@ -20,7 +20,7 @@ export default function CardPokemon({ text, favorite, favoriteList, remove }) {
   async function getInformations() {
     try {
       const response = await PokemonApi.getPokemonInformation(text);
-      // console.log("informações", response);
+      console.log("informações", response);
       setInfo(response);
     } catch (error) {
       console.log("error: ", error);
@@ -35,7 +35,7 @@ export default function CardPokemon({ text, favorite, favoriteList, remove }) {
   return (
     <Flex
       w={"16vw"}
-      h={"30vh"}
+      h={"40vh"}
       bgColor={"#ffffff99"}
       justifyContent={"space-evenly"}
       flexDir={"column"}
@@ -53,6 +53,21 @@ export default function CardPokemon({ text, favorite, favoriteList, remove }) {
       <Text fontWeight={"bold"} mt={1}>
         {CaptionFormater(text)}
       </Text>
+      <Flex w={"100%"} justifyContent={"space-evenly"}>
+        {info &&
+          info.types.map((i) => {
+            return (
+              <Flex
+                w={"40%"}
+                border={"1px solid blue"}
+                justifyContent={"center"}
+                borderRadius={"6px"}
+              >
+                <Text fontWeight={"bold"}>{CaptionFormater(i.type.name)}</Text>
+              </Flex>
+            );
+          })}
+      </Flex>
       {isFavorite ? (
         <Button
           bgColor={"red"}
