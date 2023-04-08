@@ -1,8 +1,10 @@
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
+const item = window.localStorage.getItem("favoritos");
+
 const initialState = {
-  favorites: [],
+  favorites: item ? JSON.parse(item) : [],
 };
 
 function rootReducer(state = initialState, action) {

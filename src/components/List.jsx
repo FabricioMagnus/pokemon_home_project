@@ -14,14 +14,21 @@ import PokemonApi from "../services/pokemonAPI";
 import { useEffect, useState } from "react";
 import CardPokemon from "./defaultComponents/cardPokemon";
 import { useSelector, useDispatch } from "react-redux";
+import useLocalStorage from "../helpers/useLocalStorage";
 
 export default function List() {
   const navigate = useNavigate();
   const pokemonList = useSelector((state) => state.pokemonList);
-  const favorites = useSelector((state) => state.favorites);
+  const favoritos = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
 
   const [lista, setLista] = useState();
+
+  const [favorites, setFavorites] = useLocalStorage("favoritos", favoritos);
+
+  useEffect(() => {
+    setFavorites(favoritos);
+  }, [favoritos]);
 
   async function getPokemonList() {
     try {
@@ -44,7 +51,7 @@ export default function List() {
     getPokemonList();
   }, []);
 
-  console.log("favoritos", favorites);
+  // console.log("favoritos", favoritos);
   return (
     <Flex
       w={"100vw"}
@@ -94,7 +101,7 @@ export default function List() {
               <CardPokemon
                 text={item.name}
                 favorite={handleAddFavorite}
-                favoriteList={favorites}
+                favoriteList={favoritos}
                 remove={removeFavorite}
                 key={index}
               />
