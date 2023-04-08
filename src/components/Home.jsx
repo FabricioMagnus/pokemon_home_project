@@ -19,7 +19,7 @@ export default function Home() {
       <Flex
         w={"60vw"}
         h={"40vh"}
-        bgColor={"#ffffff50"}
+        bgColor={"#ffffff90"}
         my={4}
         justifyContent={"space-evenly"}
         flexDir={"column"}
@@ -47,8 +47,8 @@ export default function Home() {
           Siga para a Lista
         </Button>
         <Text
-          color={"black"}
-          fontSize={"1.8rem"}
+          color={AZULPOKEMONLOGO}
+          fontSize={"1.6rem"}
           textAlign={"center"}
           fontWeight={"bold"}
         >

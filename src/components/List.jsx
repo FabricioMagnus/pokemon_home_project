@@ -13,33 +13,46 @@ import { AMARELOPOKEMONLOGO, AZULPOKEMONLOGO } from "../constants/colors";
 import PokemonApi from "../services/pokemonAPI";
 import { useEffect, useState } from "react";
 import CardPokemon from "./defaultComponents/cardPokemon";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function List() {
   const navigate = useNavigate();
+  const pokemonList = useSelector((state) => state.pokemonList);
+  const favorites = useSelector((state) => state.favorites);
+  const dispatch = useDispatch();
 
   const [lista, setLista] = useState();
 
-  async function getPokemonLis() {
+  async function getPokemonList() {
     try {
       const response = await PokemonApi.getPokemons();
-      console.log("pokemons", response);
+      // console.log("pokemons", response);
       setLista(response.results);
     } catch (error) {
       console.log("error: ", error);
     }
   }
+  function handleAddFavorite(pokemon) {
+    dispatch({ type: "ADD_FAVORITE", payload: pokemon });
+  }
+
+  function removeFavorite(pokemon) {
+    dispatch({ type: "REMOVE_FAVORITE", payload: pokemon });
+  }
 
   useEffect(() => {
-    getPokemonLis();
+    getPokemonList();
   }, []);
+
+  console.log("favoritos", favorites);
   return (
     <Flex
       w={"100vw"}
       h={"100vh"}
-      //   bgColor={"green"}
+      bgColor={"green"}
       flexDir={"column"}
       alignItems={"center"}
-      bgImage={"/background-lista.png"}
+      // bgImage={"/background-lista.png"}
       bgSize={"cover"}
       overflowY={"scroll"}
     >
@@ -74,10 +87,18 @@ export default function List() {
           Voltar a Home
         </Button>
       </Flex>
-      <SimpleGrid columns={4} spacing={10} my={6} px={8}>
+      <SimpleGrid columns={5} spacing={10} my={6} px={8}>
         {lista &&
           lista.map((item, index) => {
-            return <CardPokemon text={item.name} key={index} />;
+            return (
+              <CardPokemon
+                text={item.name}
+                favorite={handleAddFavorite}
+                favoriteList={favorites}
+                remove={removeFavorite}
+                key={index}
+              />
+            );
           })}
       </SimpleGrid>
     </Flex>
