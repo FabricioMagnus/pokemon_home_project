@@ -167,7 +167,7 @@ export default function CardPokemon({ text, favorite, favoriteList, remove }) {
     getInformations();
   }, [text]);
 
-  console.log("cor para utilizar", getColorForBackground("grass"));
+  // console.log("cor para utilizar", getColorForBackground("grass"));
   return (
     <Flex
       w={"16vw"}
