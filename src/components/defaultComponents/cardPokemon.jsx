@@ -123,19 +123,18 @@ export default function CardPokemon({ text, favorite, favoriteList, remove }) {
 
   // console.log("pokemonType", pokemonType);
 
-  const pokemonTypeColor =
-    pokemonType &&
-    pokemonTypesAndColors.filter(
-      (type) => type.type.toLowerCase() == pokemonType
-    )[0].color;
+  function getColorForBackground(tipoSelecionado) {
+    const color = pokemonTypesAndColors.find(
+      (type) => type.type.toLowerCase() === tipoSelecionado.toLowerCase()
+    )?.bgColor;
+    return color || "#FFFFFF";
+  }
 
-  async function getColorForBackground(type) {
-    const color =
-      pokemonType &&
-      pokemonTypesAndColors.filter((type) => type.type.toLowerCase() == type)[0]
-        .color;
-
-    return color;
+  function getFontColor(tipoSelecionado) {
+    const color = pokemonTypesAndColors.find(
+      (type) => type.type.toLowerCase() === tipoSelecionado.toLowerCase()
+    )?.fontColor;
+    return color || "#FFFFFF";
   }
 
   const fontColor =
@@ -155,7 +154,7 @@ export default function CardPokemon({ text, favorite, favoriteList, remove }) {
   async function getInformations() {
     try {
       const response = await PokemonApi.getPokemonInformation(text);
-      console.log("informações", response);
+      // console.log("informações", response);
       setInfo(response);
     } catch (error) {
       console.log("error: ", error);
@@ -167,6 +166,8 @@ export default function CardPokemon({ text, favorite, favoriteList, remove }) {
   useEffect(() => {
     getInformations();
   }, [text]);
+
+  console.log("cor para utilizar", getColorForBackground("grass"));
   return (
     <Flex
       w={"16vw"}
@@ -198,11 +199,18 @@ export default function CardPokemon({ text, favorite, favoriteList, remove }) {
             return (
               <Flex
                 w={"40%"}
-                border={"1px solid blue"}
                 justifyContent={"center"}
                 borderRadius={"6px"}
-                bgColor={pokemonTypeColor ? pokemonTypeColor : "black"}
-                color={fontColor ? fontColor : "white"}
+                bgColor={
+                  getColorForBackground(i.type.name)
+                    ? getColorForBackground(i.type.name)
+                    : "black"
+                }
+                color={
+                  getFontColor(i.type.name)
+                    ? getFontColor(i.type.name)
+                    : "white"
+                }
               >
                 <Text fontWeight={"bold"}>{CaptionFormater(i.type.name)}</Text>
               </Flex>
