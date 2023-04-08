@@ -94,7 +94,7 @@ export default function List() {
           Voltar a Home
         </Button>
       </Flex>
-      <SimpleGrid columns={5} spacing={10} my={6} px={8}>
+      <SimpleGrid columns={{ sm: 1, md: 3, lg: 5 }} spacing={10} my={6} px={8}>
         {lista &&
           lista.map((item, index) => {
             return (

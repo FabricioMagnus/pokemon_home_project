@@ -212,7 +212,9 @@ export default function CardPokemon({ text, favorite, favoriteList, remove }) {
                     : "white"
                 }
               >
-                <Text fontWeight={"bold"}>{CaptionFormater(i.type.name)}</Text>
+                <Text fontWeight={"bold"} fontSize={"1rem"}>
+                  {CaptionFormater(i.type.name)}
+                </Text>
               </Flex>
             );
           })}
@@ -221,6 +223,9 @@ export default function CardPokemon({ text, favorite, favoriteList, remove }) {
         <Button
           bgColor={"red"}
           color={"white"}
+          w={"90%"}
+          fontSize={"1rem"}
+          whiteSpace={"pre-wrap"}
           onClick={() => {
             remove(text);
           }}
@@ -231,6 +236,9 @@ export default function CardPokemon({ text, favorite, favoriteList, remove }) {
         <Button
           bgColor={"green"}
           color={"white"}
+          w={"90%"}
+          whiteSpace={"pre-wrap"}
+          fontSize={"1rem"}
           onClick={() => {
             favorite(text);
           }}
