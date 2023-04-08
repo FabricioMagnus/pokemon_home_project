@@ -56,7 +56,7 @@ export default function List() {
     <Flex
       w={"100vw"}
       h={"100vh"}
-      bgColor={"green"}
+      bgColor={"#d2d2d2"}
       flexDir={"column"}
       alignItems={"center"}
       // bgImage={"/background-lista.png"}
