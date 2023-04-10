@@ -1,7 +1,7 @@
 import { Flex, Spacer, Image, Box, Text, Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { LISTA } from "../constants/paths";
-import { AMARELOPOKEMONLOGO, AZULPOKEMONLOGO } from "../constants/colors";
+import { LISTA } from "../../constants/paths";
+import { AMARELOPOKEMONLOGO, AZULPOKEMONLOGO } from "../../constants/colors";
 
 export default function Home() {
   const navigate = useNavigate();

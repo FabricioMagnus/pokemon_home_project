@@ -8,13 +8,13 @@ import {
   SimpleGrid,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { HOME } from "../constants/paths";
-import { AMARELOPOKEMONLOGO, AZULPOKEMONLOGO } from "../constants/colors";
-import PokemonApi from "../services/pokemonAPI";
+import { HOME } from "../../constants/paths";
+import { AMARELOPOKEMONLOGO, AZULPOKEMONLOGO } from "../../constants/colors";
+import PokemonApi from "../../services/pokemonAPI";
 import { useEffect, useState } from "react";
-import CardPokemon from "./defaultComponents/cardPokemon";
+import CardPokemon from "../defaultComponents/cardPokemon";
 import { useSelector, useDispatch } from "react-redux";
-import useLocalStorage from "../helpers/useLocalStorage";
+import useLocalStorage from "../../helpers/useLocalStorage";
 
 export default function List() {
   const navigate = useNavigate();
