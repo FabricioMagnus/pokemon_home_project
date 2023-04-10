@@ -18,7 +18,7 @@ import useLocalStorage from "../../helpers/useLocalStorage";
 
 export default function List() {
   const navigate = useNavigate();
-  const pokemonList = useSelector((state) => state.pokemonList);
+  // const pokemonList = useSelector((state) => state.pokemonList);
   const favoritos = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
 
